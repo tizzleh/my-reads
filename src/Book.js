@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Cover extends Component {
+class Book extends Component {
 
 };
 
@@ -10,4 +10,4 @@ render() {
 
   )
 }
- export default Cover
+ export default Book
