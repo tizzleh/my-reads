@@ -6,13 +6,13 @@ class Shelf extends Component {
 
 
     render() {
-        const moveBook = this.props
-        const books = this.props
-
+        const books = this.props.books
+        const moveBook = this.props.moveBook
         return (
             <ol className="books-grid">
                 {books.map((book) =>(
-                    <Book />
+                    <Book book={ book }
+                        moveBook={moveBook}/>
                 ))}
             </ol>
         )
@@ -22,6 +22,6 @@ class Shelf extends Component {
 
 Shelf.propTypes = {
     moveBook: PropTypes.func.isRequired,
-    books: PropTypes.object.isRequired,
+    books: PropTypes.array.isRequired,
 }
 export default Shelf
