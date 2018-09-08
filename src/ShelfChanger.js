@@ -15,3 +15,4 @@ render() {
     </div>
     )
 }
+export default ShelfChanger
