@@ -1,15 +1,20 @@
-import React, { component } from 'react';
-import Book from './Book.js';
+import React, { Component } from 'react'
+import Book from './Book'
 
 class Shelf extends Component {
 
-}
+    render() {
+        const shelfChange = this.props
+        const books = this.props
 
-render (){
+        return (
+            <ol className="books-grid">
+                {books.map((book) =>(
+                    <Book />
+                ))}
+            </ol>
+        )
+    }
 
-  return(
-    <ol className="books-grid">
-    <Book />    
-    </ol>
-  )
 }
+export default Shelf

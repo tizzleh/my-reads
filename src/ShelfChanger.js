@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ShelfChanger extends Component { }
+class ShelfChanger extends Component {
 
 render() {
   return (
@@ -14,5 +14,6 @@ render() {
       </select>
     </div>
     )
+}
 }
 export default ShelfChanger
