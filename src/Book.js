@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+
 class Book extends Component {
 
 
     render() {
+        const books = this.props.books
+        const book = this.props.book
+        const moveBook = this.props.moveBook
 
         return (
             <li>
