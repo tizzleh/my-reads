@@ -5,16 +5,15 @@ import ListBooks from './ListBooks'
 BooksAPI.getAll()
 
 class App extends Component {
-    // state = {
-    // books: [],
-    /**
-     * TODO: Instead of using this state variable to keep track of which page
-     * we're on, use the URL in the browser's address bar. This will ensure that
-     * users can use the browser's back and forward buttons to navigate between
-     * pages, as well as provide a good URL they can bookmark and share.
-     */
-    // showSearchPage: true
-    // }
+  constructor(props){
+  super(props)
+  this.state = {
+    books: [], // Set to empty til component mounts
+    showSearchPage: false,
+  }
+
+  }
+
     componentDidMount() {
         BooksAPI.getAll().then((books) => {
             this.setState({books})
@@ -54,9 +53,11 @@ class App extends Component {
                         <div className="list-books-content">
                             <div>
                                 <div className="bookshelf">
-                                    <h2 className="bookshelf-title">Test Bookshelf</h2>
+                                    <h2 className="bookshelf-title">Testing Bookshelf</h2>
                                     <div className="bookshelf-books">
-                                        <ListBooks/>
+                                        <ListBooks
+                                            books={this.state.books}
+                                        />
                                     </div>
                                 </div>
                                 <div className="bookshelf">

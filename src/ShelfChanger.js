@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 class ShelfChanger extends Component {
 
+  constructor(props){
+    super(props)
+  this.state = {
+    moveBook: false,
+  }
+  }
     render() {
 
         const books = this.props.books
@@ -24,5 +31,11 @@ class ShelfChanger extends Component {
             </div>
         )
     }
+}
+
+ShelfChanger.propTypes = {
+    book: PropTypes.object.isRequired,
+    books: PropTypes.array.isRequired,
+    moveBook: PropTypes.function.isRequired,
 }
 export default ShelfChanger

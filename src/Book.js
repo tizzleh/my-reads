@@ -3,7 +3,12 @@ import PropTypes from 'prop-types'
 
 class Book extends Component {
 
+    constructor(props){
+        super(props)
+        this.state = {
+        }
 
+    }
     render() {
         const books = this.props.books
         const book = this.props.book
