@@ -4,10 +4,11 @@ import PropTypes from 'prop-types'
 
 class Shelf extends Component {
 
+
     render() {
-        const shelfChange = this.props
+        const moveBook = this.props
         const books = this.props
-        // TODO: Add proptypes
+
         return (
             <ol className="books-grid">
                 {books.map((book) =>(
@@ -17,5 +18,10 @@ class Shelf extends Component {
         )
     }
 
+}
+
+Shelf.propTypes = {
+    moveBook: PropTypes.func.isRequired,
+    books: PropTypes.object.isRequired,
 }
 export default Shelf
