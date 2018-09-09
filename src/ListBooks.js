@@ -3,15 +3,15 @@ import PropTypes from 'prop-types'
 
 class ListBooks extends Component {
 //TODO: Add state and props
-  constructor(props){
-  super(props)
-  this.state = {
-    moveBook: false,
-  }
-  }
+    constructor(props){
+        super(props)
+        this.state = {
+            // moveBook: false,
+        }
+    }
 
     render() {
-            return(
+        return(
 
             <ol className="books-grid">
                 {this.props.books.map((book)=>(
@@ -45,7 +45,7 @@ class ListBooks extends Component {
 
 ListBooks.propTypes = {
     books: PropTypes.array.isRequired,
-    moveBook: PropTypes.function.isRequired,
+    // moveBook: PropTypes.function.isRequired,
 }
 
 export default ListBooks
