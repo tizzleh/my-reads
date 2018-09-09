@@ -14,7 +14,7 @@ class ShelfChanger extends Component {
         const books = this.props.books
         const book = this.props.book
         const moveBook = this.props.moveBook
-        let currentShelf = ''
+        let currentShelf = 'none'
         if (books.filter( listBook => listBook.id === book.id ).length > 0 ) {
             console.log(book.title)
             currentShelf = book.shelf

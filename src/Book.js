@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import ShelfChanger from './ShelfChanger'
 
 class Book extends Component {
 
@@ -10,15 +11,19 @@ class Book extends Component {
 
     }
     render() {
-        const books = this.props.books
-        const book = this.props.book
-        const moveBook = this.props.moveBook
+      const bookCoverImg = book.imageLinks.thumbnail
+      const books = this.props.books
+      const book = this.props.book
+      const moveBook = this.props.moveBook
 
         return (
             <li>
                 <div className="book">
                     <div className="book-top">
-                        <div className="book-cover"></div>
+                        <div className="book-cover" style={{
+                            backgroundImage: `url(${bookCoverImg})`
+                        }}> </div>
+
                         <div className="book-shelf-changer">
                             <select>
                                 <option value="move" disabled>Move to...</option>

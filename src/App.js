@@ -7,6 +7,7 @@ BooksAPI.getAll()
 class App extends Component {
   constructor(props){
   super(props)
+  // TODO: Add key prop books array.
   this.state = {
     books: [], // Set to empty til component mounts
     showSearchPage: false,
@@ -19,8 +20,15 @@ class App extends Component {
             this.setState({books})
         })
     }
+    // moveBook = ( book, shelf ) => {
+    //   BooksAPI.update(book, shelf).then(response +)
+    //
+    // }
     render() {
-
+const { books } = this.state
+    let currentBooks = books.filter( book => book.shelf === "currentlyReading")
+    let wantToBooks =  books.filter( book => book.shelf === "wantToRead")
+    let readBooks = books.filter( book => book.shelf === "read")
         return (
             <div className="app">
 
@@ -56,6 +64,7 @@ class App extends Component {
                                     <h2 className="bookshelf-title">Testing Bookshelf</h2>
                                     <div className="bookshelf-books">
                                         <ListBooks
+                                          {/* key={books.id} */}
                                             books={this.state.books}
                                         />
                                     </div>
