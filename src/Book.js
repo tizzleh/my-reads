@@ -1,5 +1,7 @@
+// eslint-disable-next-line
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+// eslint-disable-next-line
 import ShelfChanger from './ShelfChanger'
 
 class Book extends Component {
@@ -7,22 +9,24 @@ class Book extends Component {
     constructor(props){
         super(props)
         this.state = {
+            books: [],
         }
 
     }
     render() {
-      const bookCoverImg = book.imageLinks.thumbnail
-      const books = this.props.books
-      const book = this.props.book
-      const moveBook = this.props.moveBook
+
+        // const { books } = this.state
+        const {book} = this.props
 
         return (
+
             <li>
                 <div className="book">
                     <div className="book-top">
                         <div className="book-cover" style={{
-                            backgroundImage: `url(${bookCoverImg})`
-                        }}> </div>
+                            width: 128, height: 188, backgroundImage: `url(${book.imageLinks.thumbnail})`
+                        }}></div>
+                        <ShelfChanger book={book} />
 
                         <div className="book-shelf-changer">
                             <select>
@@ -34,8 +38,8 @@ class Book extends Component {
                             </select>
                         </div>
                     </div>
-                    <div className="book-title">To Kill a Mockingbird</div>
-                    <div className="book-authors">Harper Lee</div>
+                    <div className="book-title">{book.title}</div>
+                    <div className="book-authors">{book.authors}</div>
                 </div>
             </li>
         )
@@ -43,7 +47,7 @@ class Book extends Component {
 }
 Book.propTypes = {
     moveBook: PropTypes.func.isRequired,
-    books: PropTypes.array.isRequired,
+    // books: PropTypes.array.isRequired,
     book: PropTypes.object.isRequired,
 }
 export default Book

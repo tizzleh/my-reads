@@ -1,42 +1,31 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Book from './Book'
 
 class ListBooks extends Component {
 //TODO: Add state and props
     constructor(props){
         super(props)
         this.state = {
-            // moveBook: false,
+            moveBook: true,
+            // books: this.books
         }
     }
 
     render() {
+        const {books, moveBook} = this.props
+        const shelfNames = [
+            {name: 'currentlyReading', text: 'Currently Reading'},
+            {name: 'wantToRead', text: 'Want To Read'},
+            {name: 'read', text: 'Read'},
+            {name: 'none', text: 'None'},
+        ]
+        // const { books } = this.props
         return(
 
             <ol className="books-grid">
-                {this.props.books.map((book)=>(
-                    <li>
-                        <div className="book">
-                            <div className="book-top">
-                                <div className="book-cover" style=
-                                    {{ width: 128, height: 188, backgroundImage:
-                                `url(${book.imageLinks.thumbnail})`
-                                    }}>
-                                </div>
-                                <div className="book-shelf-changer">
-                                    <select>
-                                        <option value="none" disabled>Move to...</option>
-                                        <option value="currentlyReading">Currently Reading</option>
-                                        <option value="wantToRead">Want to Read</option>
-                                        <option value="read">Read</option>
-                                        <option value="none">None</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className="book-title">{book.title}</div>
-                            <div className="book-authors">{book.authors}</div>
-                        </div>
-                    </li>
+                {books.map((book) => (
+                    <Book book={book} key={ book.id } />
                 ))}
             </ol>
         )
@@ -45,7 +34,7 @@ class ListBooks extends Component {
 
 ListBooks.propTypes = {
     books: PropTypes.array.isRequired,
-    // moveBook: PropTypes.function.isRequired,
+    moveBook: PropTypes.func.isRequired,
 }
 
 export default ListBooks

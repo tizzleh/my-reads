@@ -1,3 +1,4 @@
+// eslint-disable-next-line
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
@@ -6,22 +7,20 @@ class ShelfChanger extends Component {
     constructor(props){
         super(props)
         this.state = {
-            moveBook: true,
+            value: 'Move to...'
+            // moveShelf: true,
         }
+    }
+    moveShelf = (e) => {
+        this.setState({value: e.target.value })
+        console.log(`Move to:${this.state.value}`)
     }
     render() {
 
-        const books = this.props.books
-        const book = this.props.book
-        const moveBook = this.props.moveBook
-        let currentShelf = 'none'
-        if (books.filter( listBook => listBook.id === book.id ).length > 0 ) {
-            console.log(book.title)
-            currentShelf = book.shelf
-        }
+        const {book, updateOptions} = this.props
         return (
             <div className="book-shelf-changer">
-                <select  onChange={this.moveBook} value={book.shelf}>
+                <select value={this.state.value} onChange={this.moveShelf}>
                     <option value="move" disabled>Move to...</option>
                     <option value="currentlyReading">Currently Reading</option>
                     <option value="wantToRead">Want to Read</option>
@@ -35,7 +34,7 @@ class ShelfChanger extends Component {
 
 ShelfChanger.propTypes = {
     book: PropTypes.object.isRequired,
-    books: PropTypes.array.isRequired,
-    moveBook: PropTypes.function.isRequired,
+    // books: PropTypes.array.isRequired,
+    // moveBook: PropTypes.function.isRequired,
 }
 export default ShelfChanger
