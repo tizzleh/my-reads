@@ -1,4 +1,6 @@
+// eslint-disable-next-line
 import React, { Component } from 'react'
+// eslint-disable-next-line
 import Book from './Book'
 import PropTypes from 'prop-types'
 
@@ -6,8 +8,7 @@ class Shelf extends Component {
 
 
     render() {
-        const books = this.props.books
-        const moveBook = this.props.moveBook
+        const {books, moveBook} = this.props
         return (
             <ol className="books-grid">
                 {books.map((book) =>(

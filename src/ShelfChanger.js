@@ -17,7 +17,7 @@ class ShelfChanger extends Component {
     }
     render() {
 
-        const {book, updateOptions} = this.props
+        const {book} = this.props
         return (
             <div className="book-shelf-changer">
                 <select value={this.state.value} onChange={this.moveShelf}>
