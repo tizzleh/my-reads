@@ -4,7 +4,6 @@ import * as BooksAPI from './BooksAPI'
 import ListBooks from './ListBooks'
 import { Link, Route } from 'react-router-dom'
 import Search from './SearchBooks'
-BooksAPI.getAll()
 
 class App extends Component {
 
@@ -15,8 +14,6 @@ class App extends Component {
         }
     }
     componentDidMount() {
-
-        // get books on load
         BooksAPI.getAll().then((books) => {
             this.setState({books})
         })
@@ -24,14 +21,10 @@ class App extends Component {
 
   moveBook = ( newBook, newShelf ) => {
       BooksAPI.update(newBook, newShelf).then(response =>{
-
-          // set shelf for new or updated book
           newBook.shelf = newShelf
 
-          // get list of books without updated or new book
           let updatedBooks = this.state.books.filter( book => book.id !== newBook.id )
 
-          // add book to array and set new state
           updatedBooks.push(newBook)
           this.setState({ books: updatedBooks })
       })
@@ -51,7 +44,6 @@ class App extends Component {
               <Route exact  path="/" render={() => (
                   <div className="list-books">
                       <ListBooks
-
                           books={ books }
                           moveBook={ this.moveBook }
                       />

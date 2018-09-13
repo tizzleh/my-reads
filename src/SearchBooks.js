@@ -13,25 +13,27 @@ class SearchBooks extends Component {
             searchString: '',
             updateBooks: [],
             moveBook: true,
+            error: false,
         }
     }
 
     fetchBooks = (e) => {
-      // TODO: Fix problem when no books are found
         const searchString = e.target.value.trim()
-        this.setState({searchString})
+        this.setState({searchString: searchString})
 
         if(searchString){
             BooksAPI.search(searchString, 20).then((updateBooks) => {
                 this.setState({updateBooks})
             })
+        }else {
+            this.setState({updateBooks: [],})
         }
     }
 
     render() {
-        const {updateBooks} = this.state
+        const {updateBooks, books, searchString} = this.state
 
-        const {moveBook, searchString} = this.props
+        const {moveBook} = this.props
         return(
             <div className="search-books">
                 <div className="search-books-bar">
@@ -48,7 +50,7 @@ class SearchBooks extends Component {
                 </div>
                 <div className="search-books-results">
                     <ol className="books-grid">
-                        {updateBooks.map(book => (<BookShelf book={book} key={book.id} moveBook={moveBook}/>))}
+                        {updateBooks.map(book => (<BookShelf book={book} books={books} key={book.id} moveBook={moveBook}/>))}
                     </ol>
                 </div>
             </div>
