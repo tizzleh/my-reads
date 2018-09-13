@@ -21,9 +21,12 @@ class SearchBooks extends Component {
 
         const searchString = e.target.value.trim()
         this.setState({searchString})
-        BooksAPI.search(searchString, 20).then((books) => {
-            this.setState({books})
-        })
+
+        if(searchString){
+            BooksAPI.search(searchString, 20).then((books) => {
+                this.setState({books})
+            })
+        }
     }
 
     render() {
