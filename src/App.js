@@ -42,7 +42,7 @@ class App extends Component {
 
       return (
           <div className="app">
-              <Route path="/search" render={( { history }) => (
+              <Route path="/search" render={( { searched }) => (
                   <Search
                       books={ books }
                       moveBook={ this.moveBook }
@@ -50,9 +50,6 @@ class App extends Component {
               )} />
               <Route exact  path="/" render={() => (
                   <div className="list-books">
-                      <div className="list-books-title">
-                          <h1>MyReads</h1>
-                      </div>
                       <ListBooks
 
                           books={ books }

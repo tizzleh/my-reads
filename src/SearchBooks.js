@@ -13,24 +13,23 @@ class SearchBooks extends Component {
             searchString: '',
             updateBooks: [],
             moveBook: true,
-            books: [],
         }
     }
 
     fetchBooks = (e) => {
-
+      // TODO: Fix problem when no books are found
         const searchString = e.target.value.trim()
         this.setState({searchString})
 
         if(searchString){
-            BooksAPI.search(searchString, 20).then((books) => {
-                this.setState({books})
+            BooksAPI.search(searchString, 20).then((updateBooks) => {
+                this.setState({updateBooks})
             })
         }
     }
 
     render() {
-        const {books} = this.state
+        const {updateBooks} = this.state
 
         const {moveBook, searchString} = this.props
         return(
@@ -49,7 +48,7 @@ class SearchBooks extends Component {
                 </div>
                 <div className="search-books-results">
                     <ol className="books-grid">
-                        {books.map(book => (<BookShelf book={book} key={book.id} moveBook={moveBook}/>))}
+                        {updateBooks.map(book => (<BookShelf book={book} key={book.id} moveBook={moveBook}/>))}
                     </ol>
                 </div>
             </div>
@@ -57,7 +56,6 @@ class SearchBooks extends Component {
     }
 }
 SearchBooks.propTypes = {
-    books: PropTypes.array.isRequired,
     searchString: PropTypes.string.isRequired,
     moveBook: PropTypes.func.isRequired,
 }
