@@ -54,7 +54,7 @@ class BookShelf extends Component {
 
 BookShelf.propTypes = {
     moveBook: PropTypes.func.isRequired,
-    books: PropTypes.array.isRequired,
+    // books: PropTypes.array.isRequired,
     book: PropTypes.object.isRequired,
 }
 
