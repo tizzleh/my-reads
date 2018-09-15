@@ -23,7 +23,7 @@ class SearchBooks extends Component {
      })
 
 
-     if (searchString) {
+     if (searchString) { // Return 20 books
          BooksAPI.search(searchString, 20).then((books) => {
              books.length > 0 ?  this.setState({
                  updateBooks: books,
@@ -62,7 +62,11 @@ class SearchBooks extends Component {
              <div className="search-books-results">
                  <ol className="books-grid">
                      {updateBooks.map(book => (
-                         <BookShelf book={book} books={books} key={book.id} moveBook={moveBook}/>))}
+                         <BookShelf
+                             book={book}
+                             books={books}
+                             key={book.id}
+                             moveBook={moveBook}/>))}
                  </ol>
              </div>
          </div>

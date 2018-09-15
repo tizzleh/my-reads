@@ -5,8 +5,6 @@ import Book from './Book'
 import PropTypes from 'prop-types'
 
 class Shelf extends Component {
-
-
     render() {
         const {books, moveBook} = this.props
         return (

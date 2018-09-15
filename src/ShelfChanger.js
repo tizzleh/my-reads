@@ -7,17 +7,13 @@ class ShelfChanger extends Component {
     constructor(props){
         super(props)
         this.state = {
-            value: 'Move to...'
-            // moveShelf: true,
         }
     }
     moveShelf = (e) => {
         this.setState({value: e.target.value })
-        console.log(`Move to:${this.state.value}`)
     }
     render() {
 
-        const {book} = this.props
         return (
             <div className="book-shelf-changer">
                 <select value={this.state.value} onChange={this.moveShelf}>
@@ -34,7 +30,5 @@ class ShelfChanger extends Component {
 
 ShelfChanger.propTypes = {
     book: PropTypes.object.isRequired,
-    // books: PropTypes.array.isRequired,
-    // moveBook: PropTypes.function.isRequired,
 }
 export default ShelfChanger

@@ -10,7 +10,6 @@ class ListBooks extends Component {
         super(props)
         this.state = {
             moveBook: true,
-            // books: this.books
         }
     }
 
