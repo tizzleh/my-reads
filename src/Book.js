@@ -20,8 +20,8 @@ class Book extends Component {
                       <div className="book-cover"
                           style={{
                               width: 128,
-                              height: 193,
-                              backgroundImage: `url("${image}")`
+                              height: 166,
+                              backgroundImage: `url(${image})`
                           }}>
                       </div>
                       <div className="book-shelf-changer">
@@ -37,7 +37,7 @@ class Book extends Component {
                       </div>
                   </div>
                   <div className="book-title">{title}</div>
-                  <div className="book-authors">{author}</div>
+                  <div className="book-authors">{`${ author }`}</div>
               </div>
           </li>
       )
