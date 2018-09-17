@@ -45,8 +45,6 @@ class Book extends Component {
 }
 
 Book.propTypes = {
-    // moveBook: PropTypes.func.isRequired,
-    // book: PropTypes.object.isRequired,
     title: PropTypes.string.isRequired,
     author: PropTypes.array.isRequired,
     image: PropTypes.string.isRequired,

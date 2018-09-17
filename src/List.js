@@ -4,6 +4,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 // eslint-disable-next-line
 import Shelf from './Shelf'
+// eslint-disable-next-line
+import PropTypes from 'prop-types'
 
 
 class List extends Component {
@@ -30,11 +32,10 @@ class List extends Component {
                         )) }
                     </div>
                 </div>
-                {/*Link to the search page*/}
                 <div className="open-search">
                     <Link
                         to="/search"
-                    >Add a book</Link>
+                    >Search...</Link>
                 </div>
             </div>
         )
@@ -42,4 +43,9 @@ class List extends Component {
 }
 
 
+List.propTypes = {
+    books: PropTypes.array.isRequired,
+    shelfs: PropTypes.array.isRequired,
+    onMoveBook: PropTypes.func.isRequired,
+}
 export default List

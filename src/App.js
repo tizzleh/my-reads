@@ -8,6 +8,7 @@ import './App.css'
 import Search from './Search'
 // eslint-disable-next-line
 import List from './List'
+import PropTypes from 'prop-types'
 
 class App extends Component {
 
@@ -70,4 +71,9 @@ class App extends Component {
   }
 }
 
+List.propTypes = {
+    books: PropTypes.array.isRequired,
+    shelfs: PropTypes.array.isRequired,
+    onMoveBook: PropTypes.func.isRequired,
+}
 export default App
