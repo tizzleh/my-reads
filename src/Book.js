@@ -46,7 +46,7 @@ class Book extends Component {
 
 Book.propTypes = {
     title: PropTypes.string.isRequired,
-    author: PropTypes.array.isRequired,
+    // author: PropTypes.array.isRequired,
     image: PropTypes.string.isRequired,
 }
 
