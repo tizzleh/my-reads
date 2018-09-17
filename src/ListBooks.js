@@ -5,7 +5,6 @@ import BookShelf from './BookShelf'
 import { Link, Route } from 'react-router-dom'
 
 class ListBooks extends Component {
-//TODO: Add state and props
     constructor(props){
         super(props)
         this.state = {
@@ -68,10 +67,6 @@ class ListBooks extends Component {
             </div>
         )
     }
-
-
-
-
 }
 
 ListBooks.propTypes = {

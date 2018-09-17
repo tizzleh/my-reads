@@ -1,9 +1,13 @@
+// eslint-disable-next-line
 import React, { Component } from 'react'
-import './App.css'
+// eslint-disable-next-line
+import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
-import ListBooks from './ListBooks'
-import { Link, Route } from 'react-router-dom'
-import Search from './SearchBooks'
+import './App.css'
+// eslint-disable-next-line
+import Search from './Search'
+// eslint-disable-next-line
+import List from './List'
 
 class App extends Component {
 
@@ -11,49 +15,59 @@ class App extends Component {
         super(props)
         this.state = {
             books: [],
+            shelfs : [
+                {
+                    name: 'currentlyReading',
+                    heading: 'Currently Reading'
+                },
+                {
+                    name: 'wantToRead',
+                    heading: 'Want to Read'
+                },
+                {
+                    name: 'read',
+                    heading: 'Read'
+                },
+            ]
         }
     }
-    componentDidMount() {
-        BooksAPI.getAll().then((books) => {
-            this.setState({books})
-        })
-    }
 
-  moveBook = ( newBook, newShelf ) => {
-      BooksAPI.update(newBook, newShelf).then(response =>{
-          newBook.shelf = newShelf
+  fetchAllBooks = () => {
+      BooksAPI.getAll().then((books) => this.setState({ books }))
+  }
 
-          let updatedBooks = this.state.books.filter( book => book.id !== newBook.id )
+  componentDidMount(){
+      this.fetchAllBooks()
+  }
 
-          updatedBooks.push(newBook)
-          this.setState({ books: updatedBooks })
+  moveBook = (id,shelf) => {
+      BooksAPI.update({id}, shelf).then(()=> {
+          this.fetchAllBooks()
       })
   }
 
   render() {
-      const { books } = this.state
-
       return (
           <div className="app">
-              <Route path="/search" render={( { searched }) => (
-                  <Search
-                      books={ books }
-                      moveBook={ this.moveBook }
+              <Route exact path="/" render={() => (
+                  <List
+                      books={this.state.books}
+                      shelfs={this.state.shelfs}
+                      onMoveBook={this.moveBook}
                   />
               )} />
-              <Route exact  path="/" render={() => (
-                  <div className="list-books">
-                      <ListBooks
-                          books={ books }
-                          moveBook={ this.moveBook }
-                      />
-                      <div className="open-search">
-                          <Link to="/search">Search</Link>
-                      </div>
-                  </div>
+              <Route path="/search" render ={({ history }) => (
+                  <Search
+                      books={this.state.books}
+                      shelfs={this.state.shelfs}
+                      onMoveBook={(book, shelf)=>{
+                          this.moveBook(book, shelf)
+                          history.push('/')
+                      }} />
               )} />
           </div>
       )
   }
 }
+
 export default App
